@@ -11,7 +11,6 @@ const db = knex({
   client: 'pg',
   connection: {
     host : '127.0.0.1',
-    port : process.env.PORT,
     user : 'postgres',
     password : 'root',
     database : 'smart-brain'
@@ -28,9 +27,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-	res.send('success');
-})
+app.get('/', (req, res) => { res.send('success') })
 
 // checks if credentials match info from database
 app.post('/signin', (req, res) => signin.handleSignin(req, res, db))
